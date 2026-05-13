@@ -1,5 +1,5 @@
 # meu-ecossistema-rio
-🚀 Ecossistema Rio v3.1: Monorepo Enterprise
+🚀 Ecossistema Rio v3.1: Monorepo Enterprise.
 Este é um monorepo de alta performance e escalabilidade, focado em Hospitalidade e Serviços para a Zona Sul do Rio de Janeiro. O projeto utiliza uma arquitetura multitenant (White Label) para gerenciar múltiplos negócios como o Bares Inteligentes e o Portallar Utilitis a partir de uma base de código unificada.
 
 🏗️ Arquitetura Técnica
