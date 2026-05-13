@@ -1,0 +1,40 @@
+# =============================================================================
+# PROTEÇÃO DE SENSÍVEIS - Monorepo Luis Aguiar Tech
+# =============================================================================
+
+# Arquivos de ambiente (NUNCA commitar)
+.env
+.env.local
+.env.*.local
+
+# node_modules (gerado automaticamente pelo npm install)
+node_modules/
+
+# Build outputs
+dist/
+.next/
+build/
+
+# Turbo cache
+.turbo/
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Prisma (gerado automaticamente)
+prisma/*.db
+prisma/migrations/
+
+# Depuração
+*.tsbuildinfo

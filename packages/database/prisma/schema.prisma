@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  // URL para transações (Porta 6543) vinda do seu .env
+  url       = env("DATABASE_URL")
+  // URL direta (Porta 5432) vinda do seu .env para migrações seguras
+  directUrl = env("DIRECT_URL")
+}
+
+// -----------------------------------------------------------------------------
+// ENUMS - A Lógica Booleana do Negócio (Identidade do Ecossistema)
+// -----------------------------------------------------------------------------
+
+enum PartnerType {
+  GASTRONOMIA        // Foco: Bares Inteligentes (ex: Restaurante Joaquina)
+  SERVICO_FAMILIAR   // Foco: Portallar Utilitis
+  TECH               // Foco: Projetos Luis Aguiar Tech / Tech Showtime
+}
+
+// -----------------------------------------------------------------------------
+// MODELS - Estrutura Multitenant (Seu Estabelecimento Aqui)
+// -----------------------------------------------------------------------------
+
+model Partner {
+  id            String      @id @default(uuid())
+  name          String
+  slug          String      @unique // ex: 'joaquina-humaita'
+  type          PartnerType @default(TECH)
+  
+  // Branding Dinâmico (White Label) para o Tailwind
+  primaryColor  String      @default("#FF5733") // Laranja Bares Inteligentes
+  secondaryColor String?
+
+  // Localização (Foco em Rio de Janeiro - Zona Sul)
+  bairro        String      // Botafogo, Humaitá, etc.
+  address       String?
+  
+  // Status e Auditoria
+  isActive      Boolean     @default(true)
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@map("partners") // Nome da tabela no PostgreSQL em snake_case
+}
